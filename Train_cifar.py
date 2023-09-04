@@ -348,7 +348,6 @@ def Calculate_JSD2_1(model1, model2, num_samples, list_out1):
             out = (out1 + out2)/2     
 
             list_out1.append(out1.detach())
-            #new_targets.append(out.detach().argmax(dim=-1).cpu())
             ## Divergence clculator to record the diff. between ground truth and output prob. dist.  
             dist = JS_dist(out, F.one_hot(targets, num_classes = args.num_class))
             JSD[int(batch_idx*batch_size):int((batch_idx+1)*batch_size)] = dist.cpu()
